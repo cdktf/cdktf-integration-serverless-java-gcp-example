@@ -194,15 +194,21 @@ public class Storage extends Resource {
                 .build()
         );
 
+        DataGoogleSecretManagerSecretVersion dbPass = new DataGoogleSecretManagerSecretVersion(this, "db_pass"+ environment + "-" + user, DataGoogleSecretManagerSecretVersionConfig.builder()
+                .project(project)
+                .secret(System.getenv("DB_PASS"))
+                .build()
+        );
+
         GoogleSqlUser dbUser = new GoogleSqlUser(this, "react-application-db-user-" + environment + "-" + user, GoogleSqlUserConfig.builder()
                 .name("react-application-db-user-" + environment + "-" + user)
                 .project(project)
                 .instance(dbInstance.getId())
-                .password("password")
+                .password(dbPass.getSecretData())
                 .build()
         );
 
-        this.dbHost = dbInstance.getPrivateIpAddress() + ":5432";
+        this.dbHost = dbInstance.getPrivateIpAddress()+":5432";
         this.dbName = db.getName();
         this.dbUserName = dbUser.getName();
         this.dbUserPassword = dbUser.getPassword();
@@ -331,63 +337,6 @@ this.httpsTriggerUrl = api.getHttpsTriggerUrl();
 
 
 ## Frontend
-
-```java 
-public class Frontend extends Resource {
-
-    public Frontend(Construct scope, String id, String project, String environment, String user, String httpsTriggerUrl){
-        super(scope, id);
-
-        GoogleStorageBucket bucket = new GoogleStorageBucket(this, "cdktfpython-static-site-" + environment + "-" + user, GoogleStorageBucketConfig.builder()
-                //...
-        );
-
-        new GoogleStorageDefaultObjectAccessControl(this, "bucket-access-control-" + environment + "-" + user, GoogleStorageDefaultObjectAccessControlConfig.builder()
-                //...
-        );
-
-        GoogleComputeGlobalAddress externalIP = new GoogleComputeGlobalAddress(this, "external-react-app-ip-" + environment + "-" + user, GoogleComputeGlobalAddressConfig.builder()
-                //...
-        );
-
-        GoogleComputeBackendBucket staticSite = new GoogleComputeBackendBucket(this, "static-site-backend" + environment + "-" + user, GoogleComputeBackendBucketConfig.builder()
-                //...
-        );
-
-        GoogleComputeManagedSslCertificate sslCertificate = new GoogleComputeManagedSslCertificate(this, "ssl-certificate-" + environment + "-" + user, GoogleComputeManagedSslCertificateConfig.builder()
-                //...
-        );
-
-        GoogleComputeUrlMap webHttps = new GoogleComputeUrlMap(this, "web-url-map-https-" + environment + "-" + user, GoogleComputeUrlMapConfig.builder()
-                //...
-        );
-
-        GoogleComputeTargetHttpsProxy httpsProxy = new GoogleComputeTargetHttpsProxy(this, "web-target-proxy-https-" + environment + "-" + user, GoogleComputeTargetHttpsProxyConfig.builder()
-                //...
-        );
-
-        new GoogleComputeGlobalForwardingRule(this, "web-forwarding-rule-https-" + environment + "-" + user, GoogleComputeGlobalForwardingRuleConfig.builder()
-                //...
-        );
-
-        GoogleComputeUrlMap webHttp = new GoogleComputeUrlMap(this,"web-url-map-http-" + environment + "-" + user, GoogleComputeUrlMapConfig.builder()
-                //...
-        );
-
-        GoogleComputeTargetHttpProxy httpProxy = new GoogleComputeTargetHttpProxy(this , "web-target-proxy-http-" + environment + "-" + user, GoogleComputeTargetHttpProxyConfig.builder()
-                //...
-        );
-
-        new GoogleComputeGlobalForwardingRule(this, "web-forwarding-rule-http-" + environment + "-" + user, GoogleComputeGlobalForwardingRuleConfig.builder()
-                //...
-        );
-
-        new File(this, "env", FileConfig.builder()
-                //...
-        );
-    }
-}
-```
 
 We will host the contents of our website statically in a Google Storage Bucket– default permissions for accessing objects in this bucket are then given
 

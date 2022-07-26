@@ -10,6 +10,9 @@ import com.hashicorp.cdktf.providers.google_beta.GoogleSqlUser;
 import com.hashicorp.cdktf.providers.google_beta.GoogleSqlUserConfig;
 import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceSettings;
 import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceSettingsIpConfiguration;
+import com.hashicorp.cdktf.providers.google_beta.DataGoogleSecretManagerSecretVersion;
+import com.hashicorp.cdktf.providers.google_beta.DataGoogleSecretManagerSecretVersionConfig;
+
 import software.constructs.Construct;
 
 import java.util.HashMap;
@@ -56,18 +59,24 @@ public class Storage extends Resource {
                 .build()
         );
 
+        DataGoogleSecretManagerSecretVersion dbPass = new DataGoogleSecretManagerSecretVersion(this, "db_pass"+ environment + "-" + user, DataGoogleSecretManagerSecretVersionConfig.builder()
+                .project(project)
+                .secret(System.getenv("DB_PASS"))
+                .build()
+        );
+
         GoogleSqlUser dbUser = new GoogleSqlUser(this, "react-application-db-user-" + environment + "-" + user, GoogleSqlUserConfig.builder()
                 .name("react-application-db-user-" + environment + "-" + user)
                 .project(project)
                 .instance(dbInstance.getId())
-                .password("password")
+                .password(dbPass.getSecretData())
                 .build()
         );
 
         this.dbHost = dbInstance.getPrivateIpAddress()+":5432";
         this.dbName = db.getName();
         this.dbUserName = dbUser.getName();
-        this.dbUserPassword = dbUser.getPassword();
+        this.dbUserPassword = dbPass.getSecretData();
 
     }
 
