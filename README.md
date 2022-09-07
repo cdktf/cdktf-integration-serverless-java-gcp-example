@@ -7,7 +7,6 @@ This repository contains an end to end serverless web app hosted on GCP and depl
 Frontend: React, Create React App, statically hosted via Google Cloud Storage
 Backend API: GCP Cloud Function + Cloud SQL
 
-
 ## Application
 
 ### Stacks
@@ -39,7 +38,7 @@ public static class PostsStack extends TerraformStack{
         return this.httpsTriggerUrl;
     }
 }
-``` 
+```
 
 ```java
 public static class FrontendStack extends TerraformStack{
@@ -66,6 +65,7 @@ public static class FrontendStack extends TerraformStack{
     }
 }
 ```
+
 PostsStack and FrontendStack are static nested classes within main.java, which is the entry point for all infrastructure definitions provided by `cdktf init --template=java`.
 
 In using different Stacks to separate aspects of our infrastructure we allow for separation in state management of the frontend and backend– making alteration and redeployment of a specific piece of infrastructure a simpler process. Additionally, this allows for the instantiation of the same resource multiple times throughout.
@@ -74,13 +74,14 @@ For example…
 
 ```java
 // In main.java
- 
+
 PostsStack postsDev = new PostsStack(app, "posts-dev", "development", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"));
 FrontendStack frontendDev = new FrontendStack(app, "frontend-dev", "development", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"), postsDev.getHttpsTriggerUrl());
 
 PostsStack postsProd = new PostsStack(app, "posts-prod", "production", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"));
 FrontendStack frontendProd = new FrontendStack(app, "frontend-prod", "production", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"), postsProd.getHttpsTriggerUrl());
 ```
+
 Here we created separate instances of the infrastructure for the frontend and backend with different naming of the resources in each application environment (by ways of the environment param), with the ease of adding additional as needed.
 
 ## Posts
@@ -335,7 +336,6 @@ The trigger url for our Cloud Function is made accessible so we later hand it of
 this.httpsTriggerUrl = api.getHttpsTriggerUrl();
 ```
 
-
 ## Frontend
 
 We will host the contents of our website statically in a Google Storage Bucket– default permissions for accessing objects in this bucket are then given
@@ -469,3 +469,7 @@ new File(this, "env", FileConfig.builder()
         .build()
 );
 ```
+
+## License
+
+[Mozilla Public License v2.0](https://github.com/hashicorp/cdktf-integration-serverless-java-gcp-example/blob/main/LICENSE)
