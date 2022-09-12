@@ -50,7 +50,14 @@ public class Main {
                     .build()
             );
 
-            Posts posts = new Posts(this, "posts-" + environment + "-" + user, environment, user, project);
+            TerraformVariable dbPass = new TerraformVariable(this, "DB_PASS", TerraformVariableConfig.builder()
+                    .type("string")
+                    .sensitive(true)
+                    .description("The password for the database")
+                    .build()
+            );
+
+            Posts posts = new Posts(this, "posts-" + environment + "-" + user, environment, user, project, dbPass.getStringValue());
 
             this.httpsTriggerUrl = posts.getHttpsTriggerUrl();
         }

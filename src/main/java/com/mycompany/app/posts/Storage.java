@@ -26,7 +26,7 @@ public class Storage extends Resource {
     private String dbUserName;
     private String dbUserPassword;
 
-    public Storage(Construct scope, String id, String environment, String user, String project, GoogleServiceNetworkingConnection privateVpcConnection, String vpcId){
+    public Storage(Construct scope, String id, String environment, String user, String project, GoogleServiceNetworkingConnection privateVpcConnection, String vpcId, String dbPassword){
         super(scope, id);
 
         GoogleSqlDatabaseInstance dbInstance = new GoogleSqlDatabaseInstance(this, "db-react-application-instance" + environment + "-" + user, GoogleSqlDatabaseInstanceConfig.builder()
@@ -61,7 +61,7 @@ public class Storage extends Resource {
 
         DataGoogleSecretManagerSecretVersion dbPass = new DataGoogleSecretManagerSecretVersion(this, "db_pass"+ environment + "-" + user, DataGoogleSecretManagerSecretVersionConfig.builder()
                 .project(project)
-                .secret(System.getenv("DB_PASS"))
+                .secret(dbPassword)
                 .build()
         );
 

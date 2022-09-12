@@ -18,7 +18,7 @@ public class Posts extends Resource {
 
     private String httpsTriggerUrl;
 
-    public Posts(Construct scope, String id, String environment, String user, String project){
+    public Posts(Construct scope, String id, String environment, String user, String project, String dbPass){
         super(scope, id);
 
         GoogleComputeNetwork vpc = new GoogleComputeNetwork(this, "vpc-" + environment, GoogleComputeNetworkConfig.builder()
@@ -50,7 +50,8 @@ public class Posts extends Resource {
                 user,
                 project,
                 privateVpcConnection,
-                vpc.getId()
+                vpc.getId(),
+                dbPass
         );
 
         CloudFunction cloudFunction = new CloudFunction(this, "cloud-function-" + environment + "-" + user,
