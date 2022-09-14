@@ -1,6 +1,6 @@
 package com.mycompany.app.posts.cloudfunctions;
 
-import com.hashicorp.cdktf.providers.google_beta.*;
+import imports.google_beta.*;
 import org.zeroturnaround.zip.ZipUtil;
 import com.hashicorp.cdktf.Resource;
 import software.constructs.Construct;

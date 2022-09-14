@@ -17,17 +17,7 @@
     <dependency>
       <groupId>com.hashicorp</groupId>
       <artifactId>cdktf</artifactId>
-      <version>0.11.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.hashicorp</groupId>
-      <artifactId>cdktf-provider-google-beta</artifactId>
-      <version>0.1.51</version>
-    </dependency>
-    <dependency>
-      <groupId>com.hashicorp</groupId>
-      <artifactId>cdktf-provider-local</artifactId>
-      <version>0.5.4</version>
+      <version>0.12.2</version>
     </dependency>
     <dependency>
       <groupId>software.constructs</groupId>

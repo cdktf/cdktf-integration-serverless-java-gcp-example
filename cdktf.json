@@ -2,7 +2,10 @@
   "language": "java",
   "app": "mvn -e -q compile exec:java",
   "projectId": "ef2dfaac-f994-442c-88ec-bcb136e1f9f9",
-  "terraformProviders": [],
+  "terraformProviders": [
+    "hashicorp/google-beta@~> 4.36",
+    "hashicorp/local@~> 2.2"
+  ],
   "terraformModules": [],
   "context": {
     "excludeStackIdFromLogicalIds": "true",

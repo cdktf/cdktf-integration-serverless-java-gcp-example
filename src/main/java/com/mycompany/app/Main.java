@@ -1,15 +1,15 @@
 package com.mycompany.app;
 
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeProjectDefaultNetworkTier;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeProjectDefaultNetworkTierConfig;
+import imports.google_beta.GoogleComputeProjectDefaultNetworkTier;
+import imports.google_beta.GoogleComputeProjectDefaultNetworkTierConfig;
 import com.mycompany.app.frontend.Frontend;
 import com.mycompany.app.posts.*;
 import com.hashicorp.cdktf.*;
 import software.constructs.Construct;
 
-import com.hashicorp.cdktf.providers.google_beta.GoogleBetaProvider;
-import com.hashicorp.cdktf.providers.google_beta.GoogleBetaProviderConfig;
-import com.hashicorp.cdktf.providers.local.LocalProvider;
+import imports.google_beta.GoogleBetaProvider;
+import imports.google_beta.GoogleBetaProviderConfig;
+import imports.local.LocalProvider;
 
 public class Main {
 

@@ -3,12 +3,12 @@ package com.mycompany.app.posts;
 import com.mycompany.app.posts.cloudfunctions.CloudFunction;
 import com.mycompany.app.posts.Storage;
 import com.hashicorp.cdktf.Resource;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalAddress;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalAddressConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeNetwork;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeNetworkConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleServiceNetworkingConnection;
-import com.hashicorp.cdktf.providers.google_beta.GoogleServiceNetworkingConnectionConfig;
+import imports.google_beta.GoogleComputeGlobalAddress;
+import imports.google_beta.GoogleComputeGlobalAddressConfig;
+import imports.google_beta.GoogleComputeNetwork;
+import imports.google_beta.GoogleComputeNetworkConfig;
+import imports.google_beta.GoogleServiceNetworkingConnection;
+import imports.google_beta.GoogleServiceNetworkingConnectionConfig;
 import software.constructs.Construct;
 
 import java.util.List;

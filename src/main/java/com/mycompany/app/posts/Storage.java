@@ -1,17 +1,17 @@
 package com.mycompany.app.posts;
 
 import com.hashicorp.cdktf.Resource;
-import com.hashicorp.cdktf.providers.google_beta.GoogleServiceNetworkingConnection;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabase;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstance;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlUser;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlUserConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceSettings;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceSettingsIpConfiguration;
-import com.hashicorp.cdktf.providers.google_beta.DataGoogleSecretManagerSecretVersion;
-import com.hashicorp.cdktf.providers.google_beta.DataGoogleSecretManagerSecretVersionConfig;
+import imports.google_beta.GoogleServiceNetworkingConnection;
+import imports.google_beta.GoogleSqlDatabase;
+import imports.google_beta.GoogleSqlDatabaseConfig;
+import imports.google_beta.GoogleSqlDatabaseInstance;
+import imports.google_beta.GoogleSqlDatabaseInstanceConfig;
+import imports.google_beta.GoogleSqlUser;
+import imports.google_beta.GoogleSqlUserConfig;
+import imports.google_beta.GoogleSqlDatabaseInstanceSettings;
+import imports.google_beta.GoogleSqlDatabaseInstanceSettingsIpConfiguration;
+import imports.google_beta.DataGoogleSecretManagerSecretVersion;
+import imports.google_beta.DataGoogleSecretManagerSecretVersionConfig;
 
 import software.constructs.Construct;
 
