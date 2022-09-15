@@ -1,6 +1,10 @@
 package com.mycompany.app.posts.cloudfunctions;
 
-import imports.google_beta.*;
+import imports.google_beta.google_storage_bucket.*;
+import imports.google_beta.google_vpc_access_connector.*;
+import imports.google_beta.google_storage_bucket_object.*;
+import imports.google_beta.google_cloudfunctions_function.*;
+import imports.google_beta.google_cloudfunctions_function_iam_member.*;
 import org.zeroturnaround.zip.ZipUtil;
 import com.hashicorp.cdktf.Resource;
 import software.constructs.Construct;
