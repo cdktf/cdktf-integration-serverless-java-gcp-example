@@ -1,35 +1,34 @@
 package com.mycompany.app.frontend;
 
-import com.hashicorp.cdktf.Resource;
-import com.hashicorp.cdktf.providers.local.File;
-import com.hashicorp.cdktf.providers.local.FileConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleStorageBucket;
-import com.hashicorp.cdktf.providers.google_beta.GoogleStorageBucketConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleStorageBucketWebsite;
-import com.hashicorp.cdktf.providers.google_beta.GoogleStorageDefaultObjectAccessControl;
-import com.hashicorp.cdktf.providers.google_beta.GoogleStorageDefaultObjectAccessControlConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeBackendBucket;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeBackendBucketConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeManagedSslCertificate;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeManagedSslCertificateConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeManagedSslCertificateManaged;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeTargetHttpsProxy;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeTargetHttpsProxyConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeTargetHttpProxy;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeTargetHttpProxyConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeUrlMap;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeUrlMapConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalForwardingRule;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalForwardingRuleConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeUrlMapDefaultUrlRedirect;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalAddress;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalAddressConfig;
+import com.hashicorp.cdktf.providers.local.file.File;
+import com.hashicorp.cdktf.providers.local.file.FileConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket.GoogleStorageBucket;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket.GoogleStorageBucketConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket.GoogleStorageBucketWebsite;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_default_object_access_control.GoogleStorageDefaultObjectAccessControl;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_default_object_access_control.GoogleStorageDefaultObjectAccessControlConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_backend_bucket.GoogleComputeBackendBucket;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_backend_bucket.GoogleComputeBackendBucketConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_managed_ssl_certificate.GoogleComputeManagedSslCertificate;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_managed_ssl_certificate.GoogleComputeManagedSslCertificateConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_managed_ssl_certificate.GoogleComputeManagedSslCertificateManaged;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_target_https_proxy.GoogleComputeTargetHttpsProxy;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_target_https_proxy.GoogleComputeTargetHttpsProxyConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_target_http_proxy.GoogleComputeTargetHttpProxy;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_target_http_proxy.GoogleComputeTargetHttpProxyConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_url_map.GoogleComputeUrlMap;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_url_map.GoogleComputeUrlMapConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_url_map.GoogleComputeUrlMapDefaultUrlRedirect;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_global_forwarding_rule.GoogleComputeGlobalForwardingRule;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_global_forwarding_rule.GoogleComputeGlobalForwardingRuleConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_global_address.GoogleComputeGlobalAddress;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_global_address.GoogleComputeGlobalAddressConfig;
 import software.constructs.Construct;
 
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Frontend extends Resource {
+public class Frontend extends Construct {
 
     public Frontend(Construct scope, String id, String project, String environment, String user, String httpsTriggerUrl){
         super(scope, id);

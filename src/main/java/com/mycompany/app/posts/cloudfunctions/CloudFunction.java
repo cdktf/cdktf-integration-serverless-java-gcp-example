@@ -1,15 +1,24 @@
 package com.mycompany.app.posts.cloudfunctions;
 
-import com.hashicorp.cdktf.providers.google_beta.*;
+import com.hashicorp.cdktf.providers.google_beta.google_cloudfunctions_function.GoogleCloudfunctionsFunction;
+import com.hashicorp.cdktf.providers.google_beta.google_cloudfunctions_function.GoogleCloudfunctionsFunctionConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_cloudfunctions_function_iam_member.GoogleCloudfunctionsFunctionIamMember;
+import com.hashicorp.cdktf.providers.google_beta.google_cloudfunctions_function_iam_member.GoogleCloudfunctionsFunctionIamMemberConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket.GoogleStorageBucket;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket.GoogleStorageBucketConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket_object.GoogleStorageBucketObject;
+import com.hashicorp.cdktf.providers.google_beta.google_storage_bucket_object.GoogleStorageBucketObjectConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_vpc_access_connector.GoogleVpcAccessConnector;
+import com.hashicorp.cdktf.providers.google_beta.google_vpc_access_connector.GoogleVpcAccessConnectorConfig;
+
 import org.zeroturnaround.zip.ZipUtil;
-import com.hashicorp.cdktf.Resource;
 import software.constructs.Construct;
 
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.HashMap;
 
-public class CloudFunction extends Resource {
+public class CloudFunction extends Construct {
 
     private String httpsTriggerUrl;
 

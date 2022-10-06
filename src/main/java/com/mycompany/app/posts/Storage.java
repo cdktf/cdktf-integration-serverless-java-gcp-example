@@ -1,17 +1,16 @@
 package com.mycompany.app.posts;
 
-import com.hashicorp.cdktf.Resource;
-import com.hashicorp.cdktf.providers.google_beta.GoogleServiceNetworkingConnection;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabase;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstance;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlUser;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlUserConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceSettings;
-import com.hashicorp.cdktf.providers.google_beta.GoogleSqlDatabaseInstanceSettingsIpConfiguration;
-import com.hashicorp.cdktf.providers.google_beta.DataGoogleSecretManagerSecretVersion;
-import com.hashicorp.cdktf.providers.google_beta.DataGoogleSecretManagerSecretVersionConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_service_networking_connection.GoogleServiceNetworkingConnection;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_database.GoogleSqlDatabase;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_database.GoogleSqlDatabaseConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_database_instance.GoogleSqlDatabaseInstance;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_database_instance.GoogleSqlDatabaseInstanceConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_database_instance.GoogleSqlDatabaseInstanceSettings;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_database_instance.GoogleSqlDatabaseInstanceSettingsIpConfiguration;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_user.GoogleSqlUser;
+import com.hashicorp.cdktf.providers.google_beta.google_sql_user.GoogleSqlUserConfig;
+import com.hashicorp.cdktf.providers.google_beta.data_google_secret_manager_secret_version.DataGoogleSecretManagerSecretVersion;
+import com.hashicorp.cdktf.providers.google_beta.data_google_secret_manager_secret_version.DataGoogleSecretManagerSecretVersionConfig;
 
 import software.constructs.Construct;
 
@@ -19,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Storage extends Resource {
+public class Storage extends Construct {
 
     private String dbHost;
     private String dbName;

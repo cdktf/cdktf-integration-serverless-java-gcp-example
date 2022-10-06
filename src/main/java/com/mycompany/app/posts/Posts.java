@@ -1,20 +1,18 @@
 package com.mycompany.app.posts;
 
 import com.mycompany.app.posts.cloudfunctions.CloudFunction;
-import com.mycompany.app.posts.Storage;
-import com.hashicorp.cdktf.Resource;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalAddress;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeGlobalAddressConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeNetwork;
-import com.hashicorp.cdktf.providers.google_beta.GoogleComputeNetworkConfig;
-import com.hashicorp.cdktf.providers.google_beta.GoogleServiceNetworkingConnection;
-import com.hashicorp.cdktf.providers.google_beta.GoogleServiceNetworkingConnectionConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_global_address.GoogleComputeGlobalAddress;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_global_address.GoogleComputeGlobalAddressConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_network.GoogleComputeNetwork;
+import com.hashicorp.cdktf.providers.google_beta.google_compute_network.GoogleComputeNetworkConfig;
+import com.hashicorp.cdktf.providers.google_beta.google_service_networking_connection.GoogleServiceNetworkingConnection;
+import com.hashicorp.cdktf.providers.google_beta.google_service_networking_connection.GoogleServiceNetworkingConnectionConfig;
 import software.constructs.Construct;
 
 import java.util.List;
 
 
-public class Posts extends Resource {
+public class Posts extends Construct {
 
     private String httpsTriggerUrl;
 
