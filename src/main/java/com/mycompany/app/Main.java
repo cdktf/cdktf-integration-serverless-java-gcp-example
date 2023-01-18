@@ -75,7 +75,7 @@ public class Main {
         //DEV
         PostsStack postsDev = new PostsStack(app, "posts-dev", "development", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"));
         if (USE_REMOTE_BACKEND) {
-            new RemoteBackend(postsDev, RemoteBackendProps.builder()
+            new RemoteBackend(postsDev, RemoteBackendConfig.builder()
                     .organization("terraform-demo-mad")
                     .workspaces(new NamedRemoteWorkspace("cdktf-integration-serverless-java-example"))
                     .build()
@@ -83,7 +83,7 @@ public class Main {
         }
         FrontendStack frontendDev = new FrontendStack(app, "frontend-dev", "development", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"), postsDev.getHttpsTriggerUrl());
         if (USE_REMOTE_BACKEND) {
-            new RemoteBackend(frontendDev, RemoteBackendProps.builder()
+            new RemoteBackend(frontendDev, RemoteBackendConfig.builder()
                     .organization("terraform-demo-mad")
                     .workspaces(new NamedRemoteWorkspace("cdktf-integration-serverless-java-example"))
                     .build()
@@ -93,7 +93,7 @@ public class Main {
         //Prod
         PostsStack postsProd = new PostsStack(app, "posts-prod", "production", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"));
         if (USE_REMOTE_BACKEND) {
-            new RemoteBackend(postsProd, RemoteBackendProps.builder()
+            new RemoteBackend(postsProd, RemoteBackendConfig.builder()
                     .organization("terraform-demo-mad")
                     .workspaces(new NamedRemoteWorkspace("cdktf-integration-serverless-java-example"))
                     .build()
@@ -101,7 +101,7 @@ public class Main {
         }
         FrontendStack frontendProd = new FrontendStack(app, "frontend-prod", "production", System.getenv("CDKTF_USER"), System.getenv("PROJECT_ID"), postsProd.getHttpsTriggerUrl());
         if (USE_REMOTE_BACKEND) {
-            new RemoteBackend(frontendProd, RemoteBackendProps.builder()
+            new RemoteBackend(frontendProd, RemoteBackendConfig.builder()
                     .organization("terraform-demo-mad")
                     .workspaces(new NamedRemoteWorkspace("cdktf-integration-serverless-java-example"))
                     .build()
